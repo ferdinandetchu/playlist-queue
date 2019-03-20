@@ -1,38 +1,57 @@
 <template>
-  <v-app>
+  <v-app :dark="dark">
     <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
+      <ul>
+        <li>
+          <v-toolbar-title class="headline text-uppercase">
+            <span>Music</span>
+            <span class="font-weight-light">Town</span>
+          </v-toolbar-title>
+        </li>
+        <li><h6>Records</h6></li>
+      </ul>
       <v-spacer></v-spacer>
       <v-btn
         flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
+        @click.stop="changeTheme()"
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">change theme</span>
       </v-btn>
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view />
     </v-content>
+
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
   },
   data () {
     return {
-      //
+      theme: true,
+      dark: false
+    }
+  },
+  methods:{
+    changeTheme(){
+      if (this.theme) {
+        this.dark = true
+        return this.theme = false
+      } else {
+        this.dark = false
+        return   this.theme = true
+      }
     }
   }
-}
+};
 </script>
+
+<style>
+
+</style>
